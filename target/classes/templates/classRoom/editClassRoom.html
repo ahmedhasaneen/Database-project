@@ -1,0 +1,55 @@
+<!-- add.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles.css">
+	<title>Edit ClassRoom</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<center>
+			<h1>ClassRoom</h1>
+		</center>
+
+		<h2>Add ClassRoom</h2>
+
+		<form th:action="@{/classRoom/editClassRoom/{id}(id=${classRoom.getClassRoomId()})}" th:object="${classRoom}"
+			method="post">
+				<label for="building">Building:</label>
+				<input type="text" id="building" name="building" th:field="*{building}" required>
+				
+				<label for="floorNumber">Floor Number:</label>
+				<input type="number" id="floorNumber" name="floorNumber" th:field="*{floorNumber}" required>
+
+				<label for="pathNumber">Path Number:</label>
+				<input type="text" id="pathNumber" name="pathNumber" th:field="*{pathNumber}" required>
+				
+				<label for="capacity">Capacity:</label>
+				<input type="number" id="capacity" name="capacity" th:field="*{capacity}" required>
+
+				<label for="availableEquipment">Available Equipment:</label>
+				<input type="text" id="availableEquipment" name="availableEquipment" th:field="*{availableEquipment}" required>
+				
+				<label for="classId">class Id:</label>
+				<input type="number" id="classId" name="classId" th:field="*{classId}" required>
+				
+				
+
+				<button type="submit">Save</button>
+			</form>
+
+		<br>
+		<br>
+		<a href="/classRoom/viewClassRoom">Back to List</a>
+
+	</div>
+
+</body>
+
+</html>

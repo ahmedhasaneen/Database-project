@@ -1,0 +1,45 @@
+<!-- add.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles.css">
+	<title>Edit ClassSchedule</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<center>
+			<h1>ClassSchedule</h1>
+		</center>
+
+		<h2>Add ClassSchedule</h2>
+
+		<form th:action="@{/classSchedule/editClassSchedule/{id}(id=${classSchedule.getClassId()})}"
+			th:object="${classSchedule}" method="post">
+
+			<label for="location">Class location:</label>
+			<input type="text" id="location" name="location" th:field="*{location}" required>
+
+			<label for="time">Time:</label>
+			<input type="text" id="time" name="time" th:field="*{time}" required>
+
+			<label for="days">Days:</label>
+			<input type="text" id="days" name="days" th:field="*{days}" required>
+
+
+			<button type="submit">Save</button>
+		</form>
+
+		<br>
+		<a href="/classSchedule/viewClassSchedule">Back to List</a>
+
+	</div>
+
+</body>
+
+</html>

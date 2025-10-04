@@ -1,0 +1,50 @@
+<!-- add.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles.css">
+	<title>Add Department</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<center>
+			<h1> Department</h1>
+		</center>
+
+		<h2>Add Department</h2>
+
+		<form th:action="@{/department/addDepartment}" th:object="${department}" method="post">
+			
+			<label for="Dname">Department Name:</label>
+			<input type="text" id="Dname" name="Dname" th:field="*{Dname}" required>
+			
+			<label for="buildingLocation">buildingLocation:</label>
+			<input type="text" id="buildingLocation" name="buildingLocation" th:field="*{buildingLocation}" required>
+		
+			<label for="presidnetId">Presidnet Id:</label>
+			<input type="number" id="presidnetId" name="presidnetId" th:field="*{presidnetId}" required>
+			
+			<label for="perStartData">President Start Data:</label>
+			<input type="date" id="perStartData" name="perStartData" th:field="*{perStartData}" required>
+
+			<button type="submit">Save</button>
+		</form>
+		<div th:if="${successMessage}" style="color: green;">
+		    <p th:text="${successMessage}"></p>
+		</div>
+
+		<br>
+		<br>
+		<a href="/department/viewDepartment">Back to List</a>
+
+	</div>
+
+</body>
+
+</html>

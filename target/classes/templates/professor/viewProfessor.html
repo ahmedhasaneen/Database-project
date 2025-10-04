@@ -1,0 +1,58 @@
+<!-- list.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Student Management System</title>
+</head>
+<body>
+
+<div class="container">
+    <center>
+    <h1>Professor</h1>    
+    </center>
+
+    <h2>Professor List</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Specialization</th>
+            <th>Email</th>
+            <th>Office Location</th>
+            <th>Phone Number</th>
+            <th>Class Id</th>
+            <th>Department Id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="professor : ${professor}">
+            <td th:text="${professor.professor_id}"></td>
+            <td th:text="${professor.name}"></td>
+            <td th:text="${professor.birthData}"></td>
+            <td th:text="${professor.specialization}"></td>
+            <td th:text="${professor.email}"></td>
+            <td th:text="${professor.office_location}"></td>
+            <td th:text="${professor.phone_no}"></td>
+            <td th:text="${professor.class_id}"></td>
+            <td th:text="${professor.department_id}"></td>
+            <td><a th:href="@{/professor/editProfessor/{professor_id}(professor_id=${professor.professor_id})}">Edit</a></td>
+            <td><a th:href="@{/professor/deleteProfessor/{professor_id}(professor_id=${professor.professor_id})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/professor/addProfessor">Add Professor</a>
+
+</div>
+
+</body>
+</html>>
+

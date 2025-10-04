@@ -1,0 +1,60 @@
+<!-- list.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Admin Management System</title>
+</head>
+<body>
+
+<div class="container">
+    <center>
+    <h1>Admin</h1>    
+    </center>
+
+    <h2>Admin List</h2>
+	
+
+	<form th:action="@{/admin/adminSearch}" th:object="${admin}" method="get">
+		<label for="id">Admin Id:</label>
+		<input type="text" id="id" name="id">
+		<button type="submit">Search</button>
+	</form>
+	
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department Id</th>
+            <th>Position</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>			
+        <tr th:each="admin : ${admins}">
+            <td th:text="${admin.getEmployeeId()}"></td> 
+            <td th:text="${admin.ename}"></td>
+            <td th:text="${admin.departmentId}"></td>
+            <td th:text="${admin.position}"></td>
+            <td th:text="${admin.phone}"></td>
+            <td th:text="${admin.email}"></td>	
+            <td><a th:href="@{/admin/editadmin/{adminId}(adminId=${admin.getEmployeeId()})}">Edit</a></td>
+            <td><a th:href="@{/admin/deleteadmin/{adminId}(adminId=${admin.getEmployeeId()})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/admin/addAdmin">Add Admin</a>
+
+</div>
+
+</body>
+</html>
+

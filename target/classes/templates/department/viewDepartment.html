@@ -1,0 +1,58 @@
+<!-- list.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Department Management System</title>
+</head>
+<body>
+
+<div class="container">
+    <center>
+    <h1>Department</h1>    
+    </center>
+
+    <h2>Department List</h2>
+	
+
+	<form th:action="@{/department/studentDepartment}" th:object="${department}" method="get">
+		<label for="id">Student Id:</label>
+		<input type="text" id="id" name="id">
+		<button type="submit">Search</button>
+	</form>
+	
+
+    <table>
+		<thead>
+			<tr>
+				<th>Department ID</th>
+				<th>Department Name</th>
+				<th>buildingLocation</th>
+				<th>Presidnet Id</th>
+				<th>President Start Data</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="department : ${departments}">
+				<td th:text="${department.getDepartmentId()}"></td>
+				<td th:text="${department.Dname}"></td>
+				<td th:text="${department.buildingLocation}"></td>
+				<td th:text="${department.presidnetId}"></td>
+				<td th:text="${department.perStartData}"></td>
+				<td><a th:href="@{/department/editDepartment/{departmentId}(departmentId=${department.getDepartmentId()})}">Edit</a></td>
+				<td><a th:href="@{/department/deleteDepartment/{departmentId}(departmentId=${department.getDepartmentId()})}">Delete</a></td>
+			</tr>
+		</tbody>
+    </table>
+
+    <a href="/department/addDepartment">Add Department</a>
+
+</div>
+
+</body>
+</html>>
+

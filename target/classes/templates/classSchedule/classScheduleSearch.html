@@ -1,0 +1,64 @@
+<!-- list.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles.css">
+	<title>ClassSchedule Search page</title>
+</head>
+
+<body>
+
+	<class="container">
+		<center>
+			<h1>ClassSchedule</h1>
+		</center>
+
+		<h2>ClassSchedule List</h2>
+
+
+		<form th:action="@{/classSchedule/classScheduleSearch}" th:object="${classSchedule}" method="get">
+			<label for="id">ClassSchedule Id:</label>
+			<input type="text" id="id" name="id">
+			<button type="submit">Search</button>
+		</form>
+
+		<div th:if="${errorMessage}" style="color: red;">
+			<p th:text="${errorMessage}"></p>
+		</div>
+
+		<table th:if="${classSchedule != null}">
+			<thead>
+			<tr>
+			    <th>Class ID</th>
+			    <th>Location</th>
+			    <th>Time</th>
+			    <th>Days</th>
+			    <th>Edit</th>
+			    <th>Delete</th>
+			</tr>
+			</thead>
+			<tbody>			
+			<tr th:each="classSchedule : ${classSchedules}">
+			    <td th:text="${classSchedule.getClassId()}"></td> 
+			    <td th:text="${classSchedule.location}"></td>
+			    <td th:text="${classSchedule.time}"></td>
+			    <td th:text="${classSchedule.days}"></td>
+
+			    <td><a th:href="@{/classSchedule/editClassSchedule/{classScheduleId}(classScheduleId=${classSchedule.getId()})}">Edit</a></td>
+			    <td><a th:href="@{/classSchedule/deleteClassSchedule/{classScheduleId}(classScheduleId=${classSchedule.getId()})}">Delete</a></td>
+			</tr>
+			</tbody>
+		</table>
+
+
+		<a href="/student/viewStudent">back to List</a>
+
+
+		</div>
+
+</body>
+
+</html>

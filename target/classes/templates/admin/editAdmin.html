@@ -1,0 +1,52 @@
+<!-- add.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles.css">
+	<title>Edit Admin</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<center>
+			<h1>Admin</h1>
+		</center>
+
+		<h2>Add Admin</h2>
+
+		<form th:action="@{/admin/editAdmin/{id}(id=${admin.getEmployeeId()})}" th:object="${admin}"
+			method="post">
+
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name" th:field="*{ename}" required>
+						
+			<label for="departmentId">Department Id:</label>
+			<input type="text" id="departmentId" name="departmentId" th:field="*{departmentId}" required>
+					
+			<label for="position">Position:</label>
+			<input type="text" id="position" name="position" th:field="*{position}" required>
+						
+			<label for="phone">Phone:</label>
+			<input type="text" id="phone" name="phone" th:field="*{phone}" required>
+
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" th:field="*{email}" required>
+						
+
+
+			<button type="submit">Save</button>
+
+		<br>
+		<br>
+		<a href="/admin/viewAdmin">Back to List</a>
+
+	</div>
+
+</body>
+
+</html>
