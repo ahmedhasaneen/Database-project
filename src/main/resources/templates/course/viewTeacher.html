@@ -1,0 +1,54 @@
+<!-- list.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Course Management System</title>
+</head>
+<body>
+
+<div class="container">
+    <center>
+    <h1>Course</h1>    
+    </center>
+
+    <h2>Teacher List</h2>
+	
+
+	<form th:action="@{/course/courseSearch}" th:object="${course}" method="get">
+		<label for="id">Course Id:</label>
+		<input type="text" id="id" name="id">
+		<button type="submit">Search</button>
+	</form>
+	
+
+    <table>
+        <thead>
+        <tr>
+            <th>Professor ID</th>
+            <th>Course ID</th>
+			
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>			
+        <tr th:each="teach : ${teachs}">
+            <td th:text="${teach.getTeachId().getProfessorId()}"></td> 
+            <td th:text="${teach.getTeachId().getCourseId()}"></td>
+
+            <td><a th:href="@{/course/editTeacher/{courseId}(CourseId=${teach.getTeachId().getCourseId()})}">Edit</a></td>
+            <td><a th:href="@{/course/deleteTeacher/{courseId}(CourseId=${teach.getTeachId().getCourseId()})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/course/addTeacher">Add Teacher</a>
+
+</div>
+
+</body>
+</html>>
+

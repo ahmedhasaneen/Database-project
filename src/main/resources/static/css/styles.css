@@ -1,0 +1,115 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container,student{
+	max-width: fit-content;
+	margin: 19px auto;
+	background-color: #fff;
+	padding: 5px 30px 5px 25px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+}
+
+a {
+	margin: 15px;
+	padding: 5px 10px;
+}
+
+h1 {
+    color: #009688;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Add Student Form Styling */
+form {
+	display: grid;
+	grid-template-columns: min-content;
+	gap: 9px 12px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+button {
+    background-color: #009688;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    grid-column: span 2;
+}
+
+button:hover {
+    background-color: #009688;
+}
+
+.sex {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+/* View Student Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #009688;
+    color: white;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Ensure responsiveness */
+.container {
+    overflow-x: auto;
+}
+
+/* Adjust layout for small screens */
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+    button {
+        grid-column: span 1;
+    }
+}

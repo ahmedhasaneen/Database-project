@@ -1,0 +1,73 @@
+<!-- list.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles.css">
+	<title>Profrssor Search page</title>
+</head>
+
+<body>
+
+	<class="container">
+		<center>
+			<h1>Profrssor</h1>
+		</center>
+
+		<h2>Profrssor List</h2>
+
+
+		<form th:action="@{/profrssor/profrssorSearch}" th:object="${profrssor}" method="get">
+			<label for="id">Profrssor Id:</label>
+			<input type="text" id="id" name="id">
+			<button type="submit">Search</button>
+		</form>
+
+		<div th:if="${errorMessage}" style="color: red;">
+			<p th:text="${errorMessage}"></p>
+		</div>
+
+		<table th:if="${profrssor != null}">
+			<thead>
+			<tr>
+			    <th>ID</th>
+			    <th>Name</th>
+			    <th>Age</th>
+			    <th>Specialization</th>
+			    <th>Email</th>
+			    <th>Office Location</th>
+			    <th>Phone Number</th>
+			    <th>Degree</th>
+			    <th>Department Id</th>
+			    <th>Edit</th>
+			    <th>Delete</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="professor : ${professor}">
+			    <td th:text="${professor.getProfessorId()}"></td>
+			    <td th:text="${professor.name}"></td>
+			    <td th:text="${professor.birthData}"></td>
+			    <td th:text="${professor.specialization}"></td>
+			    <td th:text="${professor.email}"></td>
+			    <td th:text="${professor.office_location}"></td>
+			    <td th:text="${professor.phone_no}"></td>
+			    <td th:text="${professor.degree}"></td>
+			    <td th:text="${professor.departmentId}"></td>
+			    <td><a th:href="@{/professor/editProfessor/{professorId}(professorId=${professor.getProfessorId()})}">Edit</a></td>
+			    <td><a th:href="@{/professor/deleteProfessor/{professorId}(professorId=${professor.getProfessorId()})}">Delete</a></td>
+			</tr>
+			</tbody>
+		</table>
+
+
+		<a href="/profrssor/viewProfrssor">back to List</a>
+
+
+		</div>
+
+</body>
+
+</html>

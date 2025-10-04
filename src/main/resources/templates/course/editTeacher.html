@@ -1,0 +1,43 @@
+<!-- add.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles.css">
+	<title>Edit Course</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<center>
+			<h1>Course</h1>
+		</center>
+
+		<h2>Add Course</h2>
+
+		<form th:action="@{/course/editTeacher/{id}(id=${teach.getCourse()})}" th:object="${teach}" method="post">
+				<label for="professor">Professor Id:</label>
+				<input type="number" id="professor" name="professor" th:field="*{professor}" required>
+				
+				<label for="course">Course Id:</label>
+				<input type="number" id="course" name="course" th:field="*{course}" required>
+
+
+				<button type="submit">Save</button>
+			</form>
+			<div th:if="${successMessage}" style="color: green;">
+			    <p th:text="${successMessage}"></p>
+			</div>
+
+			<br>
+			<br>
+			<a href="/course/viewTeacher">Back to List</a>
+	</div>
+
+</body>
+
+</html>

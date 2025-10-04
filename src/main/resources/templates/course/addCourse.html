@@ -1,0 +1,51 @@
+<!-- add.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles.css">
+	<title>Add Course</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<center>
+			<h1> Course</h1>
+		</center>
+
+		<h2>Add Course</h2>
+
+		<form th:action="@{/course/addCourse}" th:object="${course}" method="post">
+			<label for="Cname">Course Name:</label>
+			<input type="text" id="Cname" name="Cname" th:field="*{Cname}" required>
+			
+			<label for="hours">Hours:</label>
+			<input type="number" id="hours" name="hours" th:field="*{hours}" required>
+		
+			<label for="descreption">Descreption:</label>
+			<input type="text" id="descreption" name="descreption" th:field="*{descreption}" required>
+			
+			<label for="class Id">Class Id:</label>
+			<input type="number" id="classId" name="classId" th:field="*{classId}" required>
+
+>
+
+			<button type="submit">Save</button>
+		</form>
+		<div th:if="${successMessage}" style="color: green;">
+		    <p th:text="${successMessage}"></p>
+		</div>
+
+		<br>
+		<br>
+		<a href="/course/viewCourse">Back to List</a>
+
+	</div>
+
+</body>
+
+</html>

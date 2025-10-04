@@ -1,0 +1,69 @@
+<!-- list.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles.css">
+	<title>ClassRoom Search page</title>
+</head>
+
+<body>
+
+	<class="container">
+		<center>
+			<h1>ClassRoom</h1>
+		</center>
+
+		<h2>ClassRoom List</h2>
+
+
+		<form th:action="@{/classRoom/classRoomSearch}" th:object="${classRoom}" method="get">
+			<label for="id">ClassRoom Id:</label>
+			<input type="text" id="id" name="id">
+			<button type="submit">Search</button>
+		</form>
+
+		<div th:if="${errorMessage}" style="color: red;">
+			<p th:text="${errorMessage}"></p>
+		</div>
+
+		<table th:if="${classRoom != null}">
+			<thead>
+			<tr>
+			    <th>Class Room Id</th>
+			    <th>Building</th>
+			    <th>FloorNumber</th>
+			    <th>PathNumber</th>
+			    <th>Capacity</th>
+			    <th>Available Equipment</th>
+			    <th>Class Id</th>
+			    <th>Edit</th>
+			    <th>Delete</th>
+			</tr>
+			</thead>
+			<tbody>			
+			<tr th:each="classRoom : ${classRooms}">
+			    <td th:text="${classRoom.getClassRoomId()}"></td> 
+			    <td th:text="${classRoom.building}"></td>
+			    <td th:text="${classRoom.floorNumber}"></td>
+			    <td th:text="${classRoom.pathNumber}"></td>
+			    <td th:text="${classRoom.capacity}"></td>
+			    <td th:text="${classRoom.availableEquipment}"></td>
+			    <td th:text="${classRoom.classId}"></td>	
+			    <td><a th:href="@{/classRoom/editClassRoom/{classRoomId}(classRoomId=${classRoom.getClassRoomId()})}">Edit</a></td>
+			    <td><a th:href="@{/classRoom/deleteClassRoom/{classRoomId}(classRoomId=${classRoom.getClassRoomId()})}">Delete</a></td>
+			</tr>
+			</tbody>
+		</table>
+
+
+		<a href="/classRoom/viewClassRoom">back to List</a>
+
+
+		</div>
+
+</body>
+
+</html>

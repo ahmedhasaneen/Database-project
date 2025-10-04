@@ -1,0 +1,71 @@
+<!-- list.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles.css">
+	<title>Admin Search page</title>
+</head>
+
+<body>
+
+	<class="container">
+		<center>
+			<h1>Admin</h1>
+		</center>
+
+		<h2>Admin List</h2>
+
+
+		<form th:action="@{/student/studentSearch}" th:object="${student}" method="get">
+			<label for="id">Student Id:</label>
+			<input type="text" id="id" name="id">
+			<button type="submit">Search</button>
+		</form>
+
+		<div th:if="${errorMessage}" style="color: red;">
+			<p th:text="${errorMessage}"></p>
+		</div>
+
+		<table th:if="${student != null}">
+			<thead>
+			<tr>
+			    <th>ID</th>
+			    <th>Name</th>
+			    <th>Age</th>
+			    <th>Sex</th>
+			    <th>Major</th>
+			    <th>GPA</th>
+			    <th>Enrolled Year</th>
+			    <th>Edit</th>
+			    <th>Delete</th>
+			</tr>
+			</thead>
+			<tbody>			
+			<tr th:each="student : ${student}">
+			    <td th:text="${student.getStudentId()}"></td> 
+			    <td th:text="${student.name}"></td>
+			    <td th:text="${student.birthData}"></td>
+			    <td th:text="${student.sex}"></td>
+			    <td th:text="${student.major}"></td>
+			    <td th:text="${student.GPA}"></td>
+				<td th:text="${student.semester}"></td>	
+				<td th:text="${student.enrollment_year}"></td>	
+				<td th:text="${student.departmentId}"></td>	
+			    <td><a th:href="@{/student/editStudent/{studentId}(studentId=${student.getStudentId()})}">Edit</a></td>
+			    <td><a th:href="@{/student/deleteStudent/{studentId}(studentId=${student.getStudentId()})}">Delete</a></td>
+			</tr>
+			</tbody>
+		</table>
+
+
+		<a href="/student/viewStudent">back to List</a>
+
+
+		</div>
+
+</body>
+
+</html>

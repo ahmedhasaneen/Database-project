@@ -1,0 +1,54 @@
+<!-- list.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Student Management System</title>
+</head>
+<body>
+
+<div class="container">
+    <center>
+    <h1>Student</h1>    
+    </center>
+
+    <h2>Student List</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>Major</th>
+            <th>GPA</th>
+            <th>Enrolled Year</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.getId()}"></td> 
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.birthData}"></td>
+            <td th:text="${student.sex}"></td>
+            <td th:text="${student.major}"></td>
+            <td th:text="${student.GPA}"></td>
+            <td th:text="${student.enrollment_year}"></td>	
+            <td><a th:href="@{/student/editStudent/{studentId}(studentId=${student.getId()})}">Edit</a></td>
+            <td><a th:href="@{/student/deleteStudent/{studentId}(studentId=${student.getId()})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/student/addStudent">Add Student</a>
+
+</div>
+
+</body>
+</html>>
+
